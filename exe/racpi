@@ -1,0 +1,9 @@
+require 'acpi'
+include Acpi::DSL
+ARGV.each do |x|
+  puts "Loading #{x}"
+  load(x)
+end
+puts "Registerd #{Acpi::Event.events.size} events ..."
+puts "Waiting for events ..."
+Acpi.listen
