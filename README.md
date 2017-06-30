@@ -12,9 +12,8 @@ $ gem install acpi
 
 ## Usage
 
-```
-racpi sample.rb
-
+``` bash
+$ racpi sample.rb
 Loading sample.rb
 Registerd 3 events ...
 Waiting for events ...
@@ -30,7 +29,7 @@ Brightness decreased.
 
 Sample config:
 
-```
+```ruby
 on // do |event|
   p event
 end
