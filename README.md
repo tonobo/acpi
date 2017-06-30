@@ -1,35 +1,45 @@
 # Acpi
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/acpi`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+This is just a wrapper around `acpi_listen`. So its not needed to use the /etc/acpi/...  
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
-```ruby
-gem 'acpi'
 ```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install acpi
+$ gem install acpi
+```
 
 ## Usage
 
-TODO: Write usage instructions here
+```
+racpi sample.rb
 
-## Development
+Loading sample.rb
+Registerd 3 events ...
+Waiting for events ...
+"video/brightnessup BRTUP 00000086 00000000"
+Brightness increased.
+"video/brightnessup BRTUP 00000086 00000000"
+Brightness increased.
+"video/brightnessdown BRTDN 00000087 00000000"
+Brightness decreased.
+"video/brightnessdown BRTDN 00000087 00000000"
+Brightness decreased.
+```
 
-After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+Sample config:
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+```
+on // do |event|
+  p event
+end
 
-## Contributing
+on /BRTUP/ do
+  puts "Brightness increased."
+end
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/acpi.
+on /BRTDN/ do
+  puts "Brightness decreased."
+end
+```
